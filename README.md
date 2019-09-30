@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # my-xmdemo1
 
 ## 项目目录结构
@@ -61,3 +62,7 @@ npm run test:unit
 
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
+=======
+# shoppingDemo
+vue全家桶+vant
+>>>>>>> 33db9ccdc32a244d84f2406e52f88757fa78bc97
