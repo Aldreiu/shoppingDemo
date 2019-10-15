@@ -5,6 +5,13 @@ import Home from './pages/Home/Home.vue'
 import Profile from './pages/Profile/Profile.vue'
 import Search from './pages/Search/Search.vue'
 import Login from './pages/Login/Login.vue'
+
+import Shop from './pages/Shop/Shop.vue'
+import ShopGoods from './pages/Shop/ShopGoods/ShopGoods.vue'
+import ShopInfo from './pages/Shop/ShopInfo/ShopInfo.vue'
+import ShopRatings from './pages/Shop/ShopRatings/ShopRatings.vue'
+
+
 const Order = () => import('./pages/Order/Order.vue');
 
 
@@ -58,6 +65,29 @@ export default new Router({
     {
       path:'/Login',
       component:Login
-    }
-  ]
+    },
+    {
+      path:'/shop',
+      component:Shop,
+      children:[
+        {
+          path:'goods',
+          component:ShopGoods
+        },
+        {
+          path:'info',
+          component:ShopInfo
+        },
+        {
+          path:'ratings',
+          component:ShopRatings
+        },
+        {
+          path:'',
+          redirect:'/shop/goods'
+        },
+      ]
+    },
+  ],
+  linkActiveClass:'is-active'
 })

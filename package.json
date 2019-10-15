@@ -10,14 +10,16 @@
   },
   "dependencies": {
     "axios": "G:\\vscode\\code7\\webpack vue cli3\\vuecli03\\vue-cliXM1\\my-xmdemo1>\"node\"  \"C:\\Users\\asus\\AppData\\Roaming\\npm\\\\node_modules\\npm\\bin\\npm-cli.js\" config get save-prefix \r\n^0.19.0",
+    "better-scroll": "G:\\vscode\\code7\\webpack vue cli3\\vuecli03\\vue-cliXM1\\my-xmdemo1>\"node\"  \"C:\\Users\\asus\\AppData\\Roaming\\npm\\\\node_modules\\npm\\bin\\npm-cli.js\" config get save-prefix \r\n^1.15.2",
     "core-js": "^2.6.5",
     "fastclick": "G:\\vscode\\code7\\webpack vue cli3\\vuecli03\\vue-cliXM1\\my-xmdemo1>\"node\"  \"C:\\Users\\asus\\AppData\\Roaming\\npm\\\\node_modules\\npm\\bin\\npm-cli.js\" config get save-prefix \r\n^1.0.6",
     "less": "G:\\vscode\\code7\\webpack vue cli3\\vuecli03\\vue-cliXM1\\my-xmdemo1>\"node\"  \"C:\\Users\\asus\\AppData\\Roaming\\npm\\\\node_modules\\npm\\bin\\npm-cli.js\" config get save-prefix \r\n^3.10.3",
     "less-loader": "G:\\vscode\\code7\\webpack vue cli3\\vuecli03\\vue-cliXM1\\my-xmdemo1>\"node\"  \"C:\\Users\\asus\\AppData\\Roaming\\npm\\\\node_modules\\npm\\bin\\npm-cli.js\" config get save-prefix \r\n^5.0.0",
     "vant": "G:\\vscode\\code7\\webpack vue cli3\\vuecli03\\vue-cliXM1\\my-xmdemo1>\"node\"  \"C:\\Users\\asus\\AppData\\Roaming\\npm\\\\node_modules\\npm\\bin\\npm-cli.js\" config get save-prefix \r\n^2.2.2",
     "vue": "^2.6.10",
+    "vue-awesome-swiper": "G:\\vscode\\code7\\webpack vue cli3\\vuecli03\\vue-cliXM1\\my-xmdemo1>\"node\"  \"C:\\Users\\asus\\AppData\\Roaming\\npm\\\\node_modules\\npm\\bin\\npm-cli.js\" config get save-prefix \r\n^3.1.3",
     "vue-router": "^3.0.3",
-    "vuex": "^3.0.1"
+    "vuex": "G:\\vscode\\code7\\webpack vue cli3\\vuecli03\\vue-cliXM1\\my-xmdemo1>\"node\"  \"C:\\Users\\asus\\AppData\\Roaming\\npm\\\\node_modules\\npm\\bin\\npm-cli.js\" config get save-prefix \r\n^3.1.1"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "^3.11.0",

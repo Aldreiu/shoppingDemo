@@ -1,0 +1,39 @@
+.mix-tag {
+    position: absolute;
+    font-size: 20px;
+    top: 0;
+    left: 0;
+    bottom: 10px;
+    right: 1px;
+    font-weight: normal; // 这里让加粗效果没了 浏览器显示一个标准的字体样式。
+    display: flex;
+    transform: scale(.5);
+    // transform-origin: 40% 0;
+}
+.activity-green{
+    .content-tag{
+        background-color: rgb(112, 188, 70);
+    }
+}
+.activity-red{
+    .content-tag{
+        background-color: rgb(240, 115, 115);
+    }
+}
+.activity-orange{
+    .content-tag{
+        background-color: rgb(241, 136, 79);
+    }
+}
+
+
+.clearfix:after,.clearfix:before{
+    content: "";
+    display: table;
+}
+.clearfix:after{
+    clear: both;
+}
+.clearfix{
+    *zoom: 1;
+}

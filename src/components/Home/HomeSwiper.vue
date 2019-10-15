@@ -2,9 +2,9 @@
     <div>
         <div class="swiper-container swiper-l">
                 <div class="swiper-wrapper">
-                    <div class="swiper-slide">Slide 1</div>
-                    <div class="swiper-slide">Slide 2</div>
-                    <div class="swiper-slide">Slide 3</div>
+                    <div class="swiper-slide"><img src="../../assets/images/20180407175040_1780.jpg" class="swiper-l-l" alt=""></div>
+                    <div class="swiper-slide"><img src="../../assets/images/20180407175111_9509.jpg" class="swiper-l-l" alt=""></div>
+                    <div class="swiper-slide"><img src="../../assets/images/20180407175142_6947.jpg" class="swiper-l-l" alt=""></div>
                 </div>
                 <!-- 如果需要分页器 -->
                 <div class="swiper-pagination swiper-p1"></div>
@@ -14,7 +14,7 @@
 
 <script>
     import Swiper from 'swiper'
-    import '../../../node_modules/swiper/css/swiper.min.css'
+    // import '../../../node_modules/swiper/css/swiper.min.css'
     export default {
         data() {
             return {
@@ -31,12 +31,18 @@
                     el: '.swiper-p1',
                 },
             })
-        },
+        }
     }
 </script>
 
 <style lang="less">
     .swiper-container {
             height: 120px;
+            .swiper-wrapper{
+                .swiper-l-l{
+                    width: 100%;
+                    height: 100%;
+                }
+            }
         }
 </style>

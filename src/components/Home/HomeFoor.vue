@@ -18,9 +18,5 @@
 </script>
 
 <style lang="less">
-    .swiper-wrapper{
-        .swiper-slide:nth-child(1){
-            background-color: red;
-        }
-    }
+    
 </style>
