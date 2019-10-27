@@ -5,9 +5,11 @@
         <span class="login_ss" v-else><van-icon name="manager" /></span>
         </router-link>
         <router-link class="center" to="/search">
-            <van-search v-model="value" placeholder="请输入搜索关键词" show-action shape="round" @search="onSearch">
+            <van-search  placeholder="请输入搜索关键词" show-action shape="round">
+                <!-- <van-search v-model="value" placeholder="请输入搜索关键词" show-action shape="round" @search="onSearch"> -->
             <label>123213</label>
-            <div slot="action" @click="onSearch">搜索</div>
+            <div slot="action">搜索</div>
+            <!-- <div slot="action" @click="onSearch">搜索</div> -->
             </van-search>        
         </router-link>
         <div class="right"><van-icon name="plus" /></div>     

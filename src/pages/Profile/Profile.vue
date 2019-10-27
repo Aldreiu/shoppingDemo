@@ -70,12 +70,15 @@
     }
 </script>
 
-<style lang="less">
+<style scoped lang="less">
+@import '../../assets/css/shop.less';
+    .header();
     .profile {
         width: 100%;
         overflow: hidden;
 
         .profile-number {
+            margin-top: -14px;
             background-color: #1989fa;
 
             .profile-link {

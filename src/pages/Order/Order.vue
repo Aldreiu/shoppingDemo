@@ -29,7 +29,9 @@ export default {
 }
 </script>
 
-<style lang="less">
+<style scoped lang="less">
+@import '../../assets/css/shop.less';
+    .header();
     .shop-warpper{
         width: 100%;
         padding-top: 20px;

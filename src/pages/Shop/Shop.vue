@@ -13,45 +13,42 @@
             </div>
         </div> -->
         <!--   下面路由的  replace 的作用是  router.replace(location)   导航后不会留下history记录，即使点击返回按钮 也不回回到这个页面   这里的作用是 为了 不让上面的的 shopheader 的返回按钮 不造成影响-->
-        <van-tabs>
+        <div class="tab-content">
+            <!-- <van-tabs v-model="activeName">
             <van-tab title="点餐" to="/shop/goods" replace></van-tab>
-            <van-tab title="评价" to="/shop/info" replace></van-tab>
-            <van-tab title="商家" to="/shop/ratings" replace></van-tab>
-        </van-tabs>
-        <router-view></router-view>
+            <van-tab title="评价" to="/shop/ratings" replace></van-tab>
+            <van-tab title="商家" to="/shop/info" replace></van-tab>
+        </van-tabs> -->
+            <ShopTab v-show="$route.meta.showTab" />
+            <keep-alive>
+                <router-view></router-view>
+            </keep-alive>
+        </div>
     </div>
 </template>
 
 <script>
     import ShopHeader from '../../components/ShopHeader/ShopHeader'
-    import BScroll from 'better-scroll'
+    import ShopTab from '../../components/ShopTab/ShopTab'
     export default {
+        data() {
+            return {
+                activeName: 0,
+            }
+        },
         mounted() {
             this.$store.dispatch('getShopInfo')
-            this.$nextTick(() => {
-                let bscrollDom = this.$refs.bscroll;
-                this.aBScroll = new BScroll(bscrollDom, {})
-            })
         },
         components: {
             ShopHeader,
+            ShopTab,
         }
     }
 </script>
 
 <style lang="less">
-    .bscroll {
-        width: 100%;
-        height: 100%;
-        overflow: hidden;
-    }
-
-    .van-tabs__line {
-        background-color: #1989fa;
-    }
-
-    .van-tab--active {
-        color: #1989fa;
+    .tab-content {
+        //  position: relative;
     }
 </style>
 

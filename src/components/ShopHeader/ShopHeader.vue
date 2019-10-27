@@ -135,6 +135,7 @@
     @import '../../assets/css/shopHeader.less';
 
     .shop-header {
+        // z-index: 200;
         height: 100%;
 
         background: #fff;
@@ -231,6 +232,8 @@
         }
 
         .shop-header-discounts {
+            position: relative;
+            z-index: 38;
             .van-collapse {
                 margin: 0 8px 0 8px;
                 border: 0 solid rgb(134, 129, 129);
@@ -478,5 +481,10 @@
                     }
             }
         }
+    }
+    .van-collapse-item__content{
+        height: 800px;
+        border-radius: 4px;
+        background-color: #fff;
     }
 </style>

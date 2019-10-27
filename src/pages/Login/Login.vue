@@ -40,7 +40,8 @@
                         </section>
                         <section class="login_message">
                             <input type="text" maxlength="11" placeholder="验证码" v-model="captcha">
-                            <img class="get_verification" src="http://localhost:4000/captcha" alt="captcha" @click="getCaptcha" ref="captcha">
+                            <img class="get_verification" src="http://localhost:4000/captcha" alt="captcha"
+                                @click="getCaptcha" ref="captcha">
                         </section>
                     </div>
                     <van-button round type="info" size="large">登录</van-button>
@@ -57,7 +58,11 @@
 
 <script>
     import AlertTip from '../../components/AlertTip/AlertTip'
-    import {reqSendCode,reqSmsLogin,reqPwdLogin} from '../../api/index'
+    import {
+        reqSendCode,
+        reqSmsLogin,
+        reqPwdLogin
+    } from '../../api/index'
     export default {
         data() {
             return {
@@ -65,12 +70,12 @@
                 name: '', // 用户名
                 pwd: '',
                 phone: '',
-                code: '',  // 短信验证码
+                code: '', // 短信验证码
                 captcha: '', // 图形验证码
                 showPwd: false, // 是否显示密码
                 vanticonname: '',
                 computeTime: 0,
-                alertText:'', // 提示文本
+                alertText: '', // 提示文本
                 showAlert: false, // 是否显示警告框
             }
         },
@@ -83,7 +88,7 @@
                 // 启动倒计时
                 if (!this.computeTime) {
                     this.computeTime = 30
-                     this.intervalId = setInterval(() => {
+                    this.intervalId = setInterval(() => {
                         this.computeTime--
                         if (this.computeTime <= 0) {
                             //停止计时
@@ -93,11 +98,11 @@
                 }
                 // 发送ajax请求（向指定手机号发送验证码短信）
                 const result = await reqSendCode(this.phone)
-                if(result.code === 1){
+                if (result.code === 1) {
                     //显示提示
                     this.showAlerts(result.msg)
                     // 停止倒计时
-                    if(this.computeTime){
+                    if (this.computeTime) {
                         this.computeTime = 0
                         clearInterval(this.intervalId)
                         this.intervalId = 0
@@ -105,72 +110,83 @@
                 }
             },
             // 异步登录
-            showAlerts(alertText){
+            showAlerts(alertText) {
                 this.showAlert = true
                 this.alertText = alertText
             },
-            async login(){
+            async login() {
                 // 前台表单验证
                 let result
-                if(this.loginWay){ // 短信登录
-                    const {phone,code} = this
-                    if(!this.rightPhone){
+                if (this.loginWay) { // 短信登录
+                    const {
+                        phone,
+                        code
+                    } = this
+                    if (!this.rightPhone) {
                         // 手机号不正确
                         this.showAlerts('手机号不正确')
                         return
-                    } else if(!/^\d{6}$/.test(code)){
+                    } else if (!/^\d{6}$/.test(code)) {
                         // 验证码必须是六位数字
                         this.showAlerts('验证必须是六位数字')
                         return
                     }
                     // 发送ajax请求短信登录
-                    result = await reqSmsLogin(phone,code)
-                    
+                    result = await reqSmsLogin(phone, code)
 
-                }else{ // 密码登录
-                    const {name,pwd,captcha} = this
-                    if(!this.name){
+
+                } else { // 密码登录
+                    const {
+                        name,
+                        pwd,
+                        captcha
+                    } = this
+                    if (!this.name) {
                         // 用户名必须指定用户名
                         this.showAlerts('用户名必须指定用户名')
                         return
-                    } else if(!this.pwd){
+                    } else if (!this.pwd) {
                         // 密码必须指定
                         this.showAlerts('密码必须指定')
                         return
-                    } else if(!this.captcha){
+                    } else if (!this.captcha) {
                         // 验证码必须指定
                         this.showAlerts('验证码必须指定')
                         return
                     }
                     // 发送ajax请求用户密码登录
-                    result = await reqPwdLogin({name,pwd,captcha})
+                    result = await reqPwdLogin({
+                        name,
+                        pwd,
+                        captcha
+                    })
                 }
                 // 停止倒计时
-                    if(this.computeTime){
-                        this.computeTime = 0
-                        clearInterval(this.intervalId)
-                        this.intervalId = 0
-                    }
-                if(result.code === 0){
-                        const user = result.data
-                        // 将user保存到vuex的state
-                        this.$store.dispatch('recordUser',user)
-                        // 去个人中心界面
-                        this.$router.replace('/profile')
-                    }else{
-                        const msg = result.msg
-                        // 验证码错了 重新调用 会发现验证码发生改变
-                        this.getCaptcha()
-                        this.showAlerts(msg)
-                    }
+                if (this.computeTime) {
+                    this.computeTime = 0
+                    clearInterval(this.intervalId)
+                    this.intervalId = 0
+                }
+                if (result.code === 0) {
+                    const user = result.data
+                    // 将user保存到vuex的state
+                    this.$store.dispatch('recordUser', user)
+                    // 去个人中心界面
+                    this.$router.replace('/profile')
+                } else {
+                    const msg = result.msg
+                    // 验证码错了 重新调用 会发现验证码发生改变
+                    this.getCaptcha()
+                    this.showAlerts(msg)
+                }
             },
-            closeTip(){
+            closeTip() {
                 this.showAlert = false
-                this.alertText=''
+                this.alertText = ''
             },
             // 获取一个新的图片验证码
-            getCaptcha(){
-                this.$refs.captcha.src = 'http://localhost:4000/captcha?time='+Date.now()
+            getCaptcha() {
+                this.$refs.captcha.src = 'http://localhost:4000/captcha?time=' + Date.now()
             }
 
         },
@@ -183,7 +199,10 @@
     }
 </script>
 
-<style lang="less">
+<style scoped lang="less">
+    @import '../../assets/css/shop.less';
+    .header();
+
     .loginContainer {
         width: 100%;
         height: 100%;

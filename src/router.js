@@ -72,15 +72,24 @@ export default new Router({
       children:[
         {
           path:'goods',
-          component:ShopGoods
+          component:ShopGoods,
+          meta:{
+            showTab:true
+          }
         },
         {
           path:'info',
-          component:ShopInfo
+          component:ShopInfo,
+          meta:{
+            showTab:true
+          }
         },
         {
           path:'ratings',
-          component:ShopRatings
+          component:ShopRatings,
+          meta:{
+            showTab:true
+          }
         },
         {
           path:'',

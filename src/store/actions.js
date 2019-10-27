@@ -9,7 +9,13 @@ import {
     RESET_USER_INFO,
     RECEIVE_GOODS,
     RECEIVE_RATINGS,
-    RECEIVE_INFO
+    RECEIVE_INFO,
+    INCREMENT_FOOD_COUNT,
+    DECREMENT_FOOD_COUNT,
+    CLEAR_CART,
+    SHOPS_TAB,
+    RECEIVE_SEARCH_SHOPS,
+    CLEAR_SEARCH_SHOPS
 } from './muttion-types'
 import {
     reqAddress,
@@ -19,7 +25,10 @@ import {
     reqLogout,
     reqShopInfo,
     reqShopRatings,
-    reqShopGoods
+    reqShopGoods,
+    reqSearchShop
+    // increment_food_count,
+    // decrement_food_count
 } from '../api'
 export default{
     // 异步获取地址的action
@@ -84,19 +93,56 @@ export default{
         }
     },
     // 异步获取商家评价列表
-    async getShopRatings({commit}){
+    async getShopRatings({commit},callback){
         const result = await reqShopRatings()
         if(result.code === 0){
             const ratings = result.data
             commit(RECEIVE_RATINGS,{ratings})
+            //数据更新
+            callback && callback()
         }
     },
     // 异步获取商品列表
-    async getShopGoods({commit}){
+    async getShopGoods({commit},callback){
         const result = await reqShopGoods()
         if(result.code === 0){
             const goods = result.data
             commit(RECEIVE_GOODS,{goods})
+            // 数据更新了  可以用watch去通知  如果自己来通知
+            callback && callback()
         }
+    },
+    // 异步搜索关键字的商家列表
+    async searchShops({commit,state},keyword){
+        // 发送异步ajax请求
+        const geohash = state.latitude + ',' + state.longitude
+        const result = await reqSearchShop({geohash,keyword})
+        // 提交一个mutation 
+        if(result.code === 0){
+            const searchShops = result.data
+            commit(RECEIVE_SEARCH_SHOPS,{searchShops})
+        }
+    },
+
+    // 同步更新food 中的 count值
+    updateFoodCount({commit},{isAdd,food}){
+        if(isAdd){
+            commit(INCREMENT_FOOD_COUNT,{food})
+        }else{
+            commit(DECREMENT_FOOD_COUNT,{food})
+        }
+    },
+
+    // 同步清空购物车
+    clearCart({commit}){
+        commit(CLEAR_CART)
+    },
+    // 同步清除 搜索列表
+    clear_search_shops({commit}){
+        commit(CLEAR_SEARCH_SHOPS)
+    },
+
+    shoptab({commit},{name}){
+        commit(SHOPS_TAB,{name})
     },
 }
